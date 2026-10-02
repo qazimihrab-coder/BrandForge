@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>BrandForge — ساخت هویت دیجیتال</title>
+
+<meta name="theme-color" content="#07070b">
+<meta name="description" content="BrandForge - ساخت لوگو و نیک‌نیم حرفه‌ای">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+
+:root{
+    --bg:#06070b;
+    --bg2:#0b0d14;
+    --card:rgba(255,255,255,.055);
+    --card2:rgba(255,255,255,.085);
+    --border:rgba(255,255,255,.10);
+    --text:#fff;
+    --muted:#9297a7;
+    --blue:#6c63ff;
+    --cyan:#00e5ff;
+    --purple:#9b5cff;
+    --green:#31e981;
+    --red:#ff4d67;
+    --shadow:0 25px 80px rgba(0,0,0,.45);
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Vazirmatn",sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(108,99,255,.16),transparent 30%),
+        radial-gradient(circle at 90% 20%,rgba(0,229,255,.09),transparent 25%),
+        radial-gradient(circle at 50% 100%,rgba(155,92,255,.10),transparent 35%),
+        var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+.bg-orb{
+    position:fixed;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.15;
+    pointer-events:none;
+    z-index:-1;
+}
+
+.orb1{
+    background:#6c63ff;
+    top:-100px;
+    right:-100px;
+}
+
+.orb2{
+    background:#00e5ff;
+    bottom:-100px;
+    left:-100px;
+}
+
+/* APP */
+
+.app{
+    width:min(1100px,100%);
+    margin:auto;
+    padding:18px;
+}
+
+/* NAVBAR */
+
+.navbar{
+    height:70px;
+    border:1px solid var(--border);
+    background:rgba(10,11,17,.72);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border-radius:22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+    position:sticky;
+    top:12px;
+    z-index:50;
+    box-shadow:0 10px 40px rgba(0,0,0,.2);
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    cursor:pointer;
+}
+
+.brand-icon{
+    width:42px;
+    height:42px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,var(--blue),var(--cyan));
+    box-shadow:0 0 30px rgba(108,99,255,.35);
+    font-size:20px;
+}
+
+.brand-name{
+    font-size:18px;
+    font-weight:900;
+    letter-spacing:-.5px;
+}
+
+.brand-name span{
+    color:#8e8aff;
+}
+
+.nav-actions{
+    display:flex;
+    gap:8px;
+}
+
+.icon-btn{
+    width:42px;
+    height:42px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.04);
+    color:white;
+    border-radius:13px;
+    cursor:pointer;
+    font-size:17px;
+}
+
+/* SCREENS */
+
+.screen{
+    display:none;
+    animation:fadeIn .45s ease;
+}
+
+.screen.active{
+    display:block;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    padding:85px 10px 55px;
+}
+
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid rgba(108,99,255,.35);
+    background:rgba(108,99,255,.09);
+    color:#aaa5ff;
+    border-radius:100px;
+    padding:8px 14px;
+    font-size:12px;
+    margin-bottom:25px;
+}
+
+.hero-badge i{
+    width:7px;
+    height:7px;
+    background:#55ffa1;
+    border-radius:50%;
+    box-shadow:0 0 12px #55ffa1;
+}
+
+.hero h1{
+    font-size:clamp(42px,9vw,82px);
+    line-height:1.05;
+    font-weight:900;
+    letter-spacing:-3px;
+}
+
+.gradient-text{
+    background:linear-gradient(90deg,#fff,#8d86ff,#00e5ff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:650px;
+    margin:24px auto 0;
+    color:var(--muted);
+    font-size:15px;
+    line-height:2;
+}
+
+.hero-actions{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:35px;
+    flex-wrap:wrap;
+}
+
+/* BUTTONS */
+
+.btn{
+    border:0;
+    border-radius:16px;
+    padding:15px 23px;
+    color:white;
+    font-family:inherit;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.btn-primary{
+    background:linear-gradient(135deg,#6c63ff,#8d58ff);
+    box-shadow:0 15px 40px rgba(108,99,255,.25);
+}
+
+.btn-secondary{
+    background:rgba(255,255,255,.06);
+    border:1px solid var(--border);
+}
+
+/* FEATURES */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:15px 0 70px;
+}
+
+.feature{
+    border:1px solid var(--border);
+    background:var(--card);
+    padding:22px;
+    border-radius:22px;
+}
+
+.feature-icon{
+    font-size:26px;
+    margin-bottom:12px;
+}
+
+.feature h3{
+    font-size:15px;
+    margin-bottom:7px;
+}
+
+.feature p{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.8;
+}
+
+/* SECTION */
+
+.section-head{
+    text-align:center;
+    padding:55px 10px 30px;
+}
+
+.section-head .mini{
+    color:#8882ff;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.section-head h2{
+    font-size:30px;
+    font-weight:900;
+}
+
+.section-head p{
+    color:var(--muted);
+    margin-top:9px;
+    font-size:13px;
+}
+
+/* CHOICE */
+
+.choice-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+.choice-card{
+    min-height:260px;
+    border:1px solid var(--border);
+    border-radius:28px;
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
+    padding:30px;
+    cursor:pointer;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.choice-card:before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:#6c63ff;
+    filter:blur(80px);
+    opacity:.15;
+    right:-50px;
+    top:-50px;
+}
+
+.choice-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(108,99,255,.5);
+    box-shadow:var(--shadow);
+}
+
+.choice-icon{
+    width:62px;
+    height:62px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(108,99,255,.12);
+    font-size:30px;
+    margin-bottom:25px;
+}
+
+.choice-card h3{
+    font-size:22px;
+    margin-bottom:9px;
+}
+
+.choice-card p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.9;
+}
+
+.choice-arrow{
+    position:absolute;
+    left:25px;
+    bottom:25px;
+    font-size:20px;
+    color:#918bff;
+}
+
+/* CATEGORY */
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.category{
+    border:1px solid var(--border);
+    background:var(--card);
+    padding:20px 12px;
+    border-radius:20px;
+    cursor:pointer;
+    text-align:center;
+    transition:.25s;
+}
+
+.category:hover,
+.category.selected{
+    background:rgba(108,99,255,.13);
+    border-color:#716aff;
+    transform:translateY(-3px);
+}
+
+.category .emoji{
+    font-size:28px;
+    display:block;
+    margin-bottom:10px;
+}
+
+.category span:last-child{
+    font-size:12px;
+    color:#d9d9e2;
+}
+
+/* FORM */
+
+.form-card{
+    max-width:760px;
+    margin:auto;
+    border:1px solid var(--border);
+    background:var(--card);
+    border-radius:28px;
+    padding:25px;
+}
+
+.field{
+    margin-bottom:20px;
+}
+
+.field label{
+    display:block;
+    margin-bottom:9px;
+    font-size:13px;
+    font-weight:700;
+}
+
+.input{
+    width:100%;
+    border:1px solid var(--border);
+    background:rgba(0,0,0,.25);
+    color:white;
+    border-radius:15px;
+    padding:15px;
+    font-family:inherit;
+    font-size:14px;
+    outline:none;
+    transition:.2s;
+}
+
+.input:focus{
+    border-color:#746cff;
+    box-shadow:0 0 0 4px rgba(108,99,255,.08);
+}
+
+.style-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:9px;
+}
+
+.style-option{
+    border:1px solid var(--border);
+    border-radius:13px;
+    padding:13px 8px;
+    background:rgba(255,255,255,.035);
+    color:#ddd;
+    text-align:center;
+    font-size:12px;
+    cursor:pointer;
+}
+
+.style-option.selected{
+    border-color:#746cff;
+    background:rgba(108,99,255,.14);
+    color:white;
+}
+
+.color-grid{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.color-option{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:3px solid transparent;
+    cursor:pointer;
+}
+
+.color-option.selected{
+    border-color:white;
+    box-shadow:0 0 0 3px rgba(255,255,255,.15);
+}
+
+.form-actions{
+    display:flex;
+    gap:10px;
+    margin-top:25px;
+}
+
+.form-actions .btn{
+    flex:1;
+}
+
+/* RESULT */
+
+.results-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.results-top h2{
+    font-size:24px;
+}
+
+.results-top p{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.results-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.result-card{
+    border:1px solid var(--border);
+    background:var(--card);
+    border-radius:24px;
+    overflow:hidden;
+}
+
+.result-preview{
+    min-height:230px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+        radial-gradient(circle,rgba(108,99,255,.13),transparent 50%),
+        #090a10;
+    position:relative;
+}
+
+.result-info{
+    padding:15px;
+}
+
+.result-name{
+    font-size:18px;
+    font-weight:800;
+    margin-bottom:4px;
+}
+
+.result-type{
+    color:var(--muted);
+    font-size:11px;
+}
+
+.result-buttons{
+    display:flex;
+    gap:8px;
+    margin-top:13px;
+}
+
+.small-btn{
+    flex:1;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.05);
+    color:white;
+    border-radius:12px;
+    padding:11px;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:12px;
+}
+
+.small-btn:hover{
+    background:rgba(255,255,255,.1);
+}
+
+/* NICKNAME */
+
+.nick-preview{
+    padding:35px;
+    text-align:center;
+    font-size:29px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.nick-style1{
+    color:#fff;
+    text-shadow:0 0 20px rgba(255,255,255,.35);
+}
+
+.nick-style2{
+    color:#7df9ff;
+    text-shadow:0 0 18px #00e5ff;
+}
+
+.nick-style3{
+    color:#b18cff;
+    text-shadow:0 0 20px #8c5cff;
+}
+
+.nick-style4{
+    color:#ff77a8;
+    text-shadow:0 0 20px #ff477e;
+}
+
+/* LOGO SVG */
+
+.logo-svg{
+    width:170px;
+    height:170px;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:55px 10px 25px;
+    color:#656978;
+    font-size:11px;
+}
+
+.footer-brand{
+    color:#aaa5ff;
+    font-weight:800;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    left:50%;
+    transform:translate(-50%,30px);
+    background:#151722;
+    border:1px solid var(--border);
+    color:white;
+    padding:13px 18px;
+    border-radius:14px;
+    font-size:12px;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+    z-index:999;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .app{
+        padding:10px;
+    }
+
+    .navbar{
+        height:62px;
+        border-radius:18px;
+        top:7px;
+    }
+
+    .brand-name{
+        font-size:16px;
+    }
+
+    .hero{
+        padding:70px 8px 45px;
+    }
+
+    .hero h1{
+        font-size:48px;
+        letter-spacing:-2px;
+    }
+
+    .hero p{
+        font-size:13px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .choice-grid{
+        grid-template-columns:1fr;
+    }
+
+    .choice-card{
+        min-height:210px;
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .style-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .results-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-card{
+        padding:18px;
+    }
+
+    .section-head h2{
+        font-size:25px;
+    }
+
+    .hero-actions{
+        flex-direction:column;
+    }
+
+    .hero-actions .btn{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<div class="app">
+
+<header class="navbar">
+
+    <div class="brand" id="homeBtn">
+        <div class="brand-icon">✦</div>
+        <div class="brand-name">
+            Brand<span>Forge</span>
+        </div>
+    </div>
+
+    <div class="nav-actions">
+        <button class="icon-btn" id="themeBtn">☼</button>
+        <button class="icon-btn" id="historyBtn">♡</button>
+    </div>
+
+</header>
+
+
+<!-- HOME -->
+
+<section class="screen active" id="homeScreen">
+
+    <div class="hero">
+
+        <div class="hero-badge">
+            <i></i>
+            ابزار ساخت هویت دیجیتال
+        </div>
+
+        <h1>
+            بساز.
+            <br>
+            <span class="gradient-text">خاص باش.</span>
+        </h1>
+
+        <p>
+            با BrandForge برای برند، پیج، گیم،
+            پروژه و پروفایل خودت یک هویت دیجیتال خاص بساز.
+        </p>
+
+        <div class="hero-actions">
+
+            <button class="btn btn-primary" id="startBtn">
+                🚀 شروع ساخت
+            </button>
+
+            <button class="btn btn-secondary" id="exploreBtn">
+                ✨ امکانات
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+            <div class="feature-icon">🎨</div>
+            <h3>Logo Maker</h3>
+            <p>
+                طراحی چند مدل لوگوی متناسب با نام و سبک انتخابی.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">👑</div>
+            <h3>Nickname Maker</h3>
+            <p>
+                ساخت نیک‌نیم‌های خاص برای گیم و شبکه‌های اجتماعی.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">⚡</div>
+            <h3>سریع و ساده</h3>
+            <p>
+                بدون ثبت‌نام و بدون نیاز به سرور؛ مستقیم در مرورگر.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MODE -->
+
+<section class="screen" id="modeScreen">
+
+    <div class="section-head">
+        <div class="mini">STEP 01</div>
+        <h2>چی می‌خواهی بسازی؟</h2>
+        <p>نوع پروژه خودت را انتخاب کن.</p>
+    </div>
+
+    <div class="choice-grid">
+
+        <div class="choice-card" data-mode="logo">
+
+            <div class="choice-icon">🎨</div>
+
+            <h3>ساخت لوگو</h3>
+
+            <p>
+                برای برند، کسب‌وکار، پیج،
+                گیم، تکنولوژی و پروژه شخصی.
+            </p>
+
+            <div class="choice-arrow">←</div>
+
+        </div>
+
+
+        <div class="choice-card" data-mode="nickname">
+
+            <div class="choice-icon">👑</div>
+
+            <h3>ساخت نیک‌نیم</h3>
+
+            <p>
+                برای Gaming، Instagram،
+                TikTok، Telegram و پروفایل شخصی.
+            </p>
+
+            <div class="choice-arrow">←</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CATEGORY -->
+
+<section class="screen" id="categoryScreen">
+
+    <div class="section-head">
+        <div class="mini">STEP 02</div>
+        <h2 id="categoryTitle">برای چه چیزی؟</h2>
+        <p>یک دسته را انتخاب کن.</p>
+    </div>
+
+    <div class="category-grid" id="categoryGrid"></div>
+
+</section>
+
+
+<!-- CUSTOMIZE -->
+
+<section class="screen" id="customScreen">
+
+    <div class="section-head">
+        <div class="mini">STEP 03</div>
+        <h2>شخصی‌سازی</h2>
+        <p>نام و استایل مورد علاقه‌ات را انتخاب کن.</p>
+    </div>
+
+
+    <div class="form-card">
+
+        <div class="field">
+
+            <label id="nameLabel">نام</label>
+
+            <input
+                id="nameInput"
+                class="input"
+                type="text"
+                maxlength="30"
+                placeholder="مثلاً MihRab"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label>استایل</label>
+
+            <div class="style-grid" id="styleGrid">
+
+                <div class="style-option selected" data-style="modern">
+                    ⚡ مدرن
+                </div>
+
+                <div class="style-option" data-style="minimal">
+                    ◇ مینیمال
+                </div>
+
+                <div class="style-option" data-style="dark">
+                    🌑 دارک
+                </div>
+
+                <div class="style-option" data-style="gaming">
+                    🎮 گیمینگ
+                </div>
+
+                <div class="style-option" data-style="luxury">
+                    👑 لوکس
+                </div>
+
+                <div class="style-option" data-style="cyber">
+                    💠 سایبر
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="field" id="colorField">
+
+            <label>رنگ اصلی</label>
+
+            <div class="color-grid">
+
+                <div class="color-option selected"
+                     data-color="#746cff"
+                     style="background:#746cff"></div>
+
+                <div class="color-option"
+                     data-color="#00e5ff"
+                     style="background:#00e5ff"></div>
+
+                <div class="color-option"
+                     data-color="#ff477e"
+                     style="background:#ff477e"></div>
+
+                <div class="color-option"
+                     data-color="#31e981"
+                     style="background:#31e981"></div>
+
+                <div class="color-option"
+                     data-color="#ffb347"
+                     style="background:#ffb347"></div>
+
+                <div class="color-option"
+                     data-color="#ffffff"
+                     style="background:#ffffff"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+            <button class="btn btn-secondary" id="backCustom">
+                برگشت
+            </button>
+
+            <button class="btn btn-primary" id="generateBtn">
+                ✨ تولید نتیجه
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- RESULTS -->
+
+<section class="screen" id="resultsScreen">
+
+    <div class="section-head">
+        <div class="mini">STEP 04</div>
+        <h2>نتایج تو آماده است</h2>
+        <p>یکی را انتخاب کن و استفاده کن.</p>
+    </div>
+
+
+    <div class="results-top">
+
+        <div>
+            <h2 id="resultTitle">BrandForge</h2>
+            <p id="resultDescription">نتایج ساخته‌شده</p>
+        </div>
+
+        <button class="btn btn-secondary" id="againBtn">
+            🔄 دوباره
+        </button>
+
+    </div>
+
+
+    <div class="results-grid" id="resultsGrid"></div>
+
+</section>
+
+
+<footer>
+    <div>
+        ساخته شده با ✦ برای ساخت هویت دیجیتال
+    </div>
+
+    <div style="margin-top:8px">
+        <span class="footer-brand">BrandForge</span>
+        © 2026
+    </div>
+</footer>
+
+</div>
+
+
+<div class="toast" id="toast">
+    کپی شد ✓
+</div>
+
+
+<script>
+
+const screens = {
+    home: document.getElementById("homeScreen"),
+    mode: document.getElementById("modeScreen"),
+    category: document.getElementById("categoryScreen"),
+    custom: document.getElementById("customScreen"),
+    results: document.getElementById("resultsScreen")
+};
+
+let state = {
+    mode: null,
+    category: null,
+    style: "modern",
+    color: "#746cff",
+    name: ""
+};
+
+
+const logoCategories = [
+    ["💼","Business","کسب‌وکار"],
+    ["📱","Instagram","اینستاگرام"],
+    ["🎮","Gaming","گیمینگ"],
+    ["💻","Technology","تکنولوژی"],
+    ["▶️","YouTube","یوتیوب"],
+    ["🛍️","Store","فروشگاه"],
+    ["👤","Personal","برند شخصی"],
+    ["🚀","Project","پروژه"]
+];
+
+const nickCategories = [
+    ["🎮","Gaming","گیمینگ"],
+    ["📸","Instagram","اینستاگرام"],
+    ["🎵","TikTok","تیک‌تاک"],
+    ["✈️","Telegram","تلگرام"],
+    ["👤","Personal","شخصی"],
+    ["💻","Coding","کدنویسی"],
+    ["🌑","Dark","دارک"],
+    ["🧙","Fantasy","فانتزی"]
+];
+
+
+function showScreen(screen){
+
+    Object.values(screens).forEach(s=>{
+        s.classList.remove("active");
+    });
+
+    screen.classList.add("active");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+function createCategories(){
+
+    const grid = document.getElementById("categoryGrid");
+
+    grid.innerHTML = "";
+
+    const list =
+        state.mode === "logo"
+        ? logoCategories
+        : nickCategories;
+
+    list.forEach(item=>{
+
+        const div = document.createElement("div");
+
+        div.className = "category";
+
+        div.innerHTML = `
+            <span class="emoji">${item[0]}</span>
+            <span>${item[2]}</span>
+        `;
+
+        div.addEventListener("click",()=>{
+
+            document.querySelectorAll(".category")
+                .forEach(x=>x.classList.remove("selected"));
+
+            div.classList.add("selected");
+
+            state.category = item[1];
+
+            showScreen(screens.custom);
+
+        });
+
+        grid.appendChild(div);
+
+    });
+}
+
+
+/* START */
+
+document.getElementById("startBtn").addEventListener("click",()=>{
+
+    showScreen(screens.mode);
+
+});
+
+
+/* EXPLORE */
+
+document.getElementById("exploreBtn").addEventListener("click",()=>{
+
+    document.querySelector(".features")
+        .scrollIntoView({behavior:"smooth"});
+
+});
+
+
+/* HOME */
+
+document.getElementById("homeBtn").addEventListener("click",()=>{
+
+    showScreen(screens.home);
+
+});
+
+
+/* MODE */
+
+document.querySelectorAll(".choice-card").forEach(card=>{
+
+    card.addEventListener("click",()=>{
+
+        state.mode = card.dataset.mode;
+
+        document.getElementById("categoryTitle").textContent =
+            state.mode === "logo"
+            ? "لوگو برای چه چیزی؟"
+            : "نیک‌نیم برای چه چیزی؟";
+
+        createCategories();
+
+        showScreen(screens.category);
+
+    });
+
+});
+
+
+/* STYLE */
+
+document.querySelectorAll(".style-option").forEach(option=>{
+
+    option.addEventListener("click",()=>{
+
+        document.querySelectorAll(".style-option")
+            .forEach(x=>x.classList.remove("selected"));
+
+        option.classList.add("selected");
+
+        state.style = option.dataset.style;
+
+    });
+
+});
+
+
+/* COLOR */
+
+document.querySelectorAll(".color-option").forEach(option=>{
+
+    option.addEventListener("click",()=>{
+
+        document.querySelectorAll(".color-option")
+            .forEach(x=>x.classList.remove("selected"));
+
+        option.classList.add("selected");
+
+        state.color = option.dataset.color;
+
+    });
+
+});
+
+
+/* GENERATE */
+
+document.getElementById("generateBtn").addEventListener("click",()=>{
+
+    const value =
+        document.getElementById("nameInput")
+        .value
+        .trim();
+
+    if(!value){
+
+        showToast("اول یک نام وارد کن");
+
+        document.getElementById("nameInput").focus();
+
+        return;
+
+    }
+
+    state.name = value;
+
+    generateResults();
+
+    saveHistory();
+
+    showScreen(screens.results);
+
+});
+
+
+/* LOGO */
+
+function makeLogo(name,color,index){
+
+    const initials =
+        name
+        .replace(/\s+/g,"")
+        .slice(0,2)
+        .toUpperCase();
+
+    const rotations = [0,45,90,135];
+
+    return `
+    <svg
+        class="logo-svg"
+        viewBox="0 0 200 200"
+        xmlns="http://www.w3.org/2000/svg">
+
+        <defs>
+
+            <linearGradient
+                id="grad${index}"
+                x1="0"
+                y1="0"
+                x2="1"
+                y2="1">
+
+                <stop offset="0%" stop-color="${color}"/>
+                <stop offset="100%" stop-color="#ffffff"/>
+
+            </linearGradient>
+
+            <filter id="glow${index}">
+
+                <feGaussianBlur
+                    stdDeviation="7"
+                    result="blur"/>
+
+                <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+
+            </filter>
+
+        </defs>
+
+        <circle
+            cx="100"
+            cy="100"
+            r="72"
+            fill="none"
+            stroke="${color}"
+            stroke-width="2"
+            opacity=".22"/>
+
+        <rect
+            x="48"
+            y="48"
+            width="104"
+            height="104"
+            rx="${index === 1 ? 52 : 25}"
+            fill="url(#grad${index})"
+            transform="rotate(${rotations[index]} 100 100)"
+            filter="url(#glow${index})"
+            opacity=".95"/>
+
+        <circle
+            cx="100"
+            cy="100"
+            r="50"
+            fill="#080910"/>
+
+        <text
+            x="100"
+            y="110"
+            text-anchor="middle"
+            font-family="Arial"
+            font-size="38"
+            font-weight="900"
+            fill="#ffffff">
+
+            ${escapeHTML(initials)}
+
+        </text>
+
+    </svg>
+    `;
+
+}
+
+
+/* NICKNAMES */
+
+function makeNicknames(name){
+
+    const clean =
+        name.replace(/\s+/g,"");
+
+    return [
+        clean + "X",
+        "亗" + clean + "亗",
+        "『" + clean + "』",
+        "么" + clean + "么",
+        "ᴍʀ " + clean,
+        "『" + clean + "』ツ",
+        "乂" + clean + "乂",
+        clean + "々"
+    ];
+
+}
+
+
+/* RESULTS */
+
+function generateResults(){
+
+    const grid =
+        document.getElementById("resultsGrid");
+
+    grid.innerHTML = "";
+
+    document.getElementById("resultTitle").textContent =
+        state.name;
+
+    document.getElementById("resultDescription").textContent =
+        state.mode === "logo"
+        ? "چند طرح لوگو برایت ساخته شد"
+        : "چند نیک‌نیم برایت ساخته شد";
+
+
+    if(state.mode === "logo"){
+
+        for(let i=0;i<4;i++){
+
+            const card =
+                document.createElement("div");
+
+            card.className = "result-card";
+
+            card.innerHTML = `
+
+                <div class="result-preview">
+                    ${makeLogo(state.name,state.color,i)}
+                </div>
+
+                <div class="result-info">
+
+                    <div class="result-name">
+                        ${escapeHTML(state.name)}
+                    </div>
+
+                    <div class="result-type">
+                        ${escapeHTML(state.category || "Logo")}
+                    </div>
+
+                    <div class="result-buttons">
+
+                        <button class="small-btn copy-logo">
+                            📋 کپی SVG
+                        </button>
+
+                        <button class="small-btn save-result">
+                            ♡ ذخیره
+                        </button>
+
+                    </div>
+
+                </div>
+            `;
+
+            const svg =
+                card.querySelector(".result-preview").innerHTML;
+
+            card.querySelector(".copy-logo")
+                .addEventListener("click",()=>{
+
+                    copyText(svg);
+
+                });
+
+            card.querySelector(".save-result")
+                .addEventListener("click",()=>{
+
+                    saveFavorite(
+                        state.name,
+                        "logo"
+                    );
+
+                });
+
+            grid.appendChild(card);
+
+        }
+
+    }else{
+
+        const names =
+            makeNicknames(state.name);
+
+        names.forEach((nick,index)=>{
+
+            const card =
+                document.createElement("div");
+
+            card.className = "result-card";
+
+            const styleClass =
+                "nick-style" + ((index % 4)+1);
+
+            card.innerHTML = `
+
+                <div class="result-preview">
+
+                    <div class="nick-preview ${styleClass}">
+                        ${escapeHTML(nick)}
+                    </div>
+
+                </div>
+
+                <div class="result-info">
+
+                    <div class="result-name">
+                        ${escapeHTML(nick)}
+                    </div>
+
+                    <div class="result-type">
+                        ${escapeHTML(state.category || "Nickname")}
+                    </div>
+
+                    <div class="result-buttons">
+
+                        <button class="small-btn copy-nick">
+                            📋 کپی
+                        </button>
+
+                        <button class="small-btn save-result">
+                            ♡ ذخیره
+                        </button>
+
+                    </div>
+
+                </div>
+            `;
+
+            card.querySelector(".copy-nick")
+                .addEventListener("click",()=>{
+
+                    copyText(nick);
+
+                });
+
+            card.querySelector(".save-result")
+                .addEventListener("click",()=>{
+
+                    saveFavorite(
+                        nick,
+                        "nickname"
+                    );
+
+                });
+
+            grid.appendChild(card);
+
+        });
+
+    }
+
+}
+
+
+/* COPY */
+
+async function copyText(text){
+
+    try{
+
+        await navigator.clipboard.writeText(text);
+
+        showToast("با موفقیت کپی شد ✓");
+
+    }catch{
+
+        const area =
+            document.createElement("textarea");
+
+        area.value = text;
+
+        document.body.appendChild(area);
+
+        area.select();
+
+        document.execCommand("copy");
+
+        area.remove();
+
+        showToast("کپی شد ✓");
+
+    }
+
+}
+
+
+/* SAVE */
+
+function saveFavorite(value,type){
+
+    const saved =
+        JSON.parse(
+            localStorage.getItem("brandforgeFavorites") || "[]"
+        );
+
+    saved.unshift({
+        value,
+        type,
+        date:Date.now()
+    });
+
+    localStorage.setItem(
+        "brandforgeFavorites",
+        JSON.stringify(saved.slice(0,50))
+    );
+
+    showToast("به علاقه‌مندی‌ها اضافه شد ♥");
+
+}
+
+
+/* HISTORY */
+
+function saveHistory(){
+
+    const history =
+        JSON.parse(
+            localStorage.getItem("brandforgeHistory") || "[]"
+        );
+
+    history.unshift({
+        name:state.name,
+        type:state.mode,
+        category:state.category,
+        date:Date.now()
+    });
+
+    localStorage.setItem(
+        "brandforgeHistory",
+        JSON.stringify(history.slice(0,30))
+    );
+
+}
+
+
+/* AGAIN */
+
+document.getElementById("againBtn")
+.addEventListener("click",()=>{
+
+    showScreen(screens.custom);
+
+});
+
+
+/* BACK */
+
+document.getElementById("backCustom")
+.addEventListener("click",()=>{
+
+    showScreen(screens.category);
+
+});
+
+
+/* THEME */
+
+document.getElementById("themeBtn")
+.addEventListener("click",()=>{
+
+    document.body.classList.toggle("light");
+
+    if(document.body.classList.contains("light")){
+
+        document.documentElement.style.setProperty(
+            "--bg","#eef0f7"
+        );
+
+        document.documentElement.style.setProperty(
+            "--bg2","#ffffff"
+        );
+
+        document.documentElement.style.setProperty(
+            "--text","#11131a"
+        );
+
+        document.documentElement.style.setProperty(
+            "--muted","#626777"
+        );
+
+        showToast("حالت روشن فعال شد");
+
+    }else{
+
+        document.documentElement.style.setProperty(
+            "--bg","#06070b"
+        );
+
+        document.documentElement.style.setProperty(
+            "--bg2","#0b0d14"
+        );
+
+        document.documentElement.style.setProperty(
+            "--text","#fff"
+        );
+
+        document.documentElement.style.setProperty(
+            "--muted","#9297a7"
+        );
+
+        showToast("حالت تاریک فعال شد");
+
+    }
+
+});
+
+
+/* HISTORY BUTTON */
+
+document.getElementById("historyBtn")
+.addEventListener("click",()=>{
+
+    const saved =
+        JSON.parse(
+            localStorage.getItem("brandforgeFavorites") || "[]"
+        );
+
+    if(saved.length === 0){
+
+        showToast("هنوز چیزی ذخیره نکردی");
+
+        return;
+
+    }
+
+    const latest = saved[0];
+
+    showToast(
+        "آخرین ذخیره: " + latest.value
+    );
+
+});
+
+
+/* TOAST */
+
+let toastTimer;
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+        setTimeout(()=>{
+            toast.classList.remove("show");
+        },2200);
+
+}
+
+
+/* SECURITY */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+</script>
+
+</body>
+</html>
