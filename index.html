@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#060914">
+
+<title>BrandForge | فونت و نیک‌نیم ساز</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;600;700;900&family=El+Messiri:wght@400;500;600;700&family=Gulzar&family=Lateef:wght@300;400;500;700&family=Markazi+Text:wght@400;500;600;700&family=Mada:wght@300;400;500;600;700;900&family=Mirza:wght@400;700&family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Rakkas&family=Reem+Kufi:wght@400;500;600;700&family=Scheherazade+New:wght@400;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#050812;
+--bg2:#080d18;
+--card:#0d1424;
+--card2:#111b2e;
+--text:#f8fafc;
+--muted:#94a3b8;
+--line:rgba(255,255,255,.09);
+--blue:#20a9ff;
+--cyan:#00e5ff;
+--purple:#8b5cf6;
+--pink:#ec4899;
+--gold:#facc15;
+--green:#22c55e;
+}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Tajawal,Arial,sans-serif;
+background:
+radial-gradient(circle at 10% 5%,rgba(0,229,255,.09),transparent 30%),
+radial-gradient(circle at 90% 15%,rgba(139,92,246,.11),transparent 32%),
+radial-gradient(circle at 50% 100%,rgba(236,72,153,.06),transparent 35%),
+var(--bg);
+color:var(--text);
+min-height:100vh;
+}
+
+button,input{
+font-family:inherit;
+}
+
+button{
+cursor:pointer;
+}
+
+.header{
+position:sticky;
+top:0;
+z-index:100;
+background:rgba(5,8,18,.78);
+backdrop-filter:blur(20px);
+border-bottom:1px solid var(--line);
+}
+
+.header-inner{
+max-width:1200px;
+margin:auto;
+padding:13px 17px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:20px;
+font-weight:900;
+}
+
+.logo-icon{
+width:42px;
+height:42px;
+border-radius:14px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+background:linear-gradient(135deg,var(--blue),var(--purple));
+box-shadow:0 0 35px rgba(32,169,255,.25);
+}
+
+.logo-name{
+background:linear-gradient(90deg,#fff,#67e8f9,#a78bfa);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.icon-btn{
+width:42px;
+height:42px;
+border-radius:13px;
+border:1px solid var(--line);
+background:rgba(255,255,255,.05);
+color:white;
+font-size:18px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:25px 14px 70px;
+}
+
+.hero{
+text-align:center;
+padding:35px 10px 25px;
+}
+
+.badge{
+display:inline-flex;
+padding:8px 15px;
+border-radius:50px;
+border:1px solid rgba(0,229,255,.2);
+background:rgba(0,229,255,.06);
+color:#8befff;
+font-size:13px;
+margin-bottom:15px;
+}
+
+.hero h1{
+font-size:clamp(40px,8vw,72px);
+font-weight:900;
+letter-spacing:-2px;
+background:linear-gradient(90deg,#fff,#67e8f9,#a78bfa,#fff);
+background-size:250%;
+-webkit-background-clip:text;
+color:transparent;
+animation:moveGradient 7s linear infinite;
+}
+
+@keyframes moveGradient{
+to{background-position:250% center}
+}
+
+.hero p{
+max-width:680px;
+margin:15px auto;
+color:var(--muted);
+line-height:2;
+font-size:15px;
+}
+
+.mode-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin:15px 0 35px;
+}
+
+.mode-card{
+background:linear-gradient(145deg,rgba(18,28,48,.95),rgba(7,12,23,.95));
+border:1px solid var(--line);
+border-radius:23px;
+padding:23px;
+text-align:center;
+transition:.25s;
+}
+
+.mode-card:hover{
+transform:translateY(-5px);
+border-color:rgba(32,169,255,.35);
+}
+
+.mode-icon{
+font-size:40px;
+margin-bottom:9px;
+}
+
+.mode-card h3{
+margin-bottom:8px;
+}
+
+.mode-card p{
+color:var(--muted);
+font-size:13px;
+line-height:1.8;
+}
+
+.main-btn{
+border:0;
+width:100%;
+padding:12px;
+border-radius:13px;
+margin-top:15px;
+color:white;
+font-weight:800;
+background:linear-gradient(90deg,var(--blue),var(--purple));
+}
+
+.section{
+margin-top:25px;
+}
+
+.section-title{
+margin-bottom:14px;
+}
+
+.section-title h2{
+font-size:23px;
+}
+
+.section-title p{
+color:var(--muted);
+font-size:13px;
+margin-top:5px;
+}
+
+.panel{
+background:rgba(9,15,28,.82);
+border:1px solid var(--line);
+border-radius:25px;
+padding:18px;
+}
+
+.name-input{
+width:100%;
+height:62px;
+border:1px solid var(--line);
+border-radius:16px;
+background:rgba(255,255,255,.045);
+color:white;
+padding:10px 16px;
+font-size:20px;
+outline:none;
+}
+
+.name-input:focus{
+border-color:var(--blue);
+box-shadow:0 0 0 4px rgba(32,169,255,.08);
+}
+
+.help{
+font-size:12px;
+color:var(--muted);
+margin-top:7px;
+}
+
+.filter-row{
+display:flex;
+gap:8px;
+overflow-x:auto;
+padding:15px 0 8px;
+scrollbar-width:none;
+}
+
+.filter-row::-webkit-scrollbar{
+display:none;
+}
+
+.filter{
+white-space:nowrap;
+border:1px solid var(--line);
+background:rgba(255,255,255,.04);
+color:#cbd5e1;
+padding:9px 14px;
+border-radius:50px;
+font-size:12px;
+}
+
+.filter.active{
+background:rgba(0,229,255,.11);
+border-color:rgba(0,229,255,.4);
+color:#8befff;
+}
+
+.font-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:13px;
+margin-top:10px;
+}
+
+.font-card{
+min-height:190px;
+padding:14px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,.08);
+background:linear-gradient(145deg,rgba(18,29,49,.95),rgba(6,11,21,.98));
+transition:.25s;
+overflow:hidden;
+}
+
+.font-card:hover{
+transform:translateY(-4px);
+border-color:rgba(32,169,255,.35);
+box-shadow:0 18px 45px rgba(0,0,0,.25);
+}
+
+.font-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:8px;
+}
+
+.font-title{
+font-size:13px;
+font-weight:800;
+color:#dbeafe;
+}
+
+.font-number{
+font-size:10px;
+color:#64748b;
+direction:ltr;
+}
+
+.font-preview{
+height:105px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+font-size:31px;
+line-height:2;
+direction:rtl;
+word-break:break-word;
+overflow:hidden;
+}
+
+.copy-btn{
+width:100%;
+padding:9px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,.08);
+background:rgba(255,255,255,.04);
+color:white;
+font-size:12px;
+}
+
+.copy-btn:hover{
+background:rgba(32,169,255,.12);
+}
+
+/* REAL FONTS */
+
+.nastaliq{
+font-family:"Noto Nastaliq Urdu",serif;
+line-height:2.7;
+}
+
+.gulzar{
+font-family:"Gulzar",serif;
+line-height:2;
+}
+
+.amiri{
+font-family:"Amiri",serif;
+}
+
+.aref{
+font-family:"Aref Ruqaa",serif;
+}
+
+.kufi{
+font-family:"Noto Kufi Arabic",sans-serif;
+}
+
+.reem{
+font-family:"Reem Kufi",sans-serif;
+}
+
+.naskh{
+font-family:"Noto Naskh Arabic",serif;
+}
+
+.lateef{
+font-family:"Lateef",serif;
+}
+
+.mirza{
+font-family:"Mirza",serif;
+}
+
+.markazi{
+font-family:"Markazi Text",serif;
+}
+
+.rakkas{
+font-family:"Rakkas",serif;
+}
+
+.scheherazade{
+font-family:"Scheherazade New",serif;
+}
+
+.cairo{
+font-family:Cairo,sans-serif;
+}
+
+.tajawal{
+font-family:Tajawal,sans-serif;
+}
+
+.elmessiri{
+font-family:"El Messiri",sans-serif;
+}
+
+.mada{
+font-family:Mada,sans-serif;
+}
+
+/* STYLES */
+
+.thin{font-weight:300}
+.normal{font-weight:400}
+.medium{font-weight:500}
+.semibold{font-weight:600}
+.bold{font-weight:700}
+.black{font-weight:900}
+
+.shadow{
+text-shadow:4px 5px 0 rgba(0,229,255,.2);
+}
+
+.glow{
+text-shadow:0 0 8px rgba(0,229,255,.8),0 0 25px rgba(0,229,255,.5);
+}
+
+.gold{
+color:#facc15;
+text-shadow:0 2px 18px rgba(250,204,21,.3);
+}
+
+.pink{
+color:#f9a8d4;
+}
+
+.cyan{
+color:#67e8f9;
+}
+
+.neon{
+text-shadow:0 0 5px white,0 0 15px #00e5ff,0 0 30px #00e5ff;
+}
+
+.outline{
+-webkit-text-stroke:1px #fff;
+color:transparent;
+}
+
+.boxed{
+border:1px solid rgba(255,255,255,.2);
+padding:7px 12px;
+border-radius:10px;
+}
+
+.spaced{
+letter-spacing:3px;
+}
+
+.italic{
+font-style:italic;
+}
+
+.double-shadow{
+text-shadow:3px 3px 0 rgba(139,92,246,.7),6px 6px 0 rgba(0,229,255,.3);
+}
+
+.graffiti{
+transform:rotate(-2deg);
+text-shadow:3px 3px 0 #000,6px 6px 12px rgba(0,0,0,.9);
+}
+
+.luxury{
+font-weight:700;
+letter-spacing:1px;
+text-shadow:0 2px 18px rgba(250,204,21,.25);
+}
+
+.nickname-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-top:15px;
+}
+
+.nick-card{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+padding:12px;
+border:1px solid var(--line);
+background:rgba(255,255,255,.035);
+border-radius:15px;
+}
+
+.nick-text{
+direction:ltr;
+text-align:left;
+font-size:16px;
+font-weight:800;
+overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
+}
+
+.nick-copy{
+border:0;
+background:rgba(32,169,255,.12);
+color:#7dd3fc;
+padding:8px 10px;
+border-radius:9px;
+flex:none;
+}
+
+.logo-maker{
+display:grid;
+grid-template-columns:270px 1fr;
+gap:18px;
+}
+
+.logo-controls{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.logo-controls label{
+font-size:12px;
+color:var(--muted);
+}
+
+.logo-controls input{
+width:100%;
+padding:12px;
+border-radius:12px;
+border:1px solid var(--line);
+background:rgba(255,255,255,.04);
+color:white;
+outline:none;
+}
+
+.logo-stage{
+min-height:320px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:23px;
+border:1px solid var(--line);
+background:
+linear-gradient(45deg,rgba(255,255,255,.025) 25%,transparent 25%),
+linear-gradient(-45deg,rgba(255,255,255,.025) 25%,transparent 25%),
+linear-gradient(45deg,transparent 75%,rgba(255,255,255,.025) 75%),
+linear-gradient(-45deg,transparent 75%,rgba(255,255,255,.025) 75%);
+background-size:30px 30px;
+}
+
+.logo-result{
+width:min(100%,350px);
+aspect-ratio:1;
+border-radius:30px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#111827,#020617);
+box-shadow:0 25px 70px rgba(0,0,0,.5);
+}
+
+.logo-symbol{
+width:115px;
+height:115px;
+border-radius:35px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:58px;
+background:linear-gradient(135deg,var(--blue),var(--purple));
+box-shadow:0 0 60px rgba(32,169,255,.25);
+}
+
+.logo-title{
+font-size:25px;
+font-weight:900;
+margin-top:20px;
+}
+
+.footer{
+text-align:center;
+padding:35px 10px;
+color:#64748b;
+font-size:12px;
+}
+
+.toast{
+position:fixed;
+bottom:25px;
+left:50%;
+transform:translate(-50%,120px);
+background:#111827;
+border:1px solid var(--line);
+padding:12px 20px;
+border-radius:13px;
+z-index:999;
+transition:.3s;
+}
+
+.toast.show{
+transform:translate(-50%,0);
+}
+
+@media(max-width:900px){
+
+.font-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.logo-maker{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:650px){
+
+.container{
+padding:20px 10px 50px;
+}
+
+.hero{
+padding-top:25px;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.mode-grid{
+grid-template-columns:1fr;
+}
+
+.font-grid{
+grid-template-columns:1fr;
+}
+
+.font-card{
+min-height:195px;
+}
+
+.font-preview{
+font-size:34px;
+}
+
+.nickname-grid{
+grid-template-columns:1fr;
+}
+
+.panel{
+padding:13px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="header-inner">
+
+<div class="logo">
+<div class="logo-icon">✦</div>
+<div class="logo-name">BrandForge</div>
+</div>
+
+<button class="icon-btn" id="themeBtn">☀️</button>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<section class="hero">
+
+<div class="badge">
+🇦🇫 Font & Style Studio
+</div>
+
+<h1>BrandForge</h1>
+
+<p>
+اسم خودت را وارد کن و با ده‌ها فونت و استایل مختلف
+آن را به یک نوشته خاص تبدیل کن.
+</p>
+
+</section>
+
+
+<section class="mode-grid">
+
+<div class="mode-card">
+
+<div class="mode-icon">✒️</div>
+
+<h3>فونت فارسی</h3>
+
+<p>
+۷۰ فونت و استایل فارسی، عربی و خوشنویسی
+</p>
+
+<button class="main-btn" onclick="goTo('fontStudio')">
+شروع
+</button>
+
+</div>
+
+
+<div class="mode-card">
+
+<div class="mode-icon">👑</div>
+
+<h3>نیک‌نیم ساز</h3>
+
+<p>
+صدها نیک‌نیم تزئینی و گیمینگ
+</p>
+
+<button class="main-btn" onclick="goTo('nicknameStudio')">
+ساخت نیک‌نیم
+</button>
+
+</div>
+
+
+<div class="mode-card">
+
+<div class="mode-icon">🎨</div>
+
+<h3>لوگو ساز</h3>
+
+<p>
+یک لوگوی ساده و زیبا برای اسم خودت
+</p>
+
+<button class="main-btn" onclick="goTo('logoStudio')">
+ساخت لوگو
+</button>
+
+</div>
+
+</section>
+
+
+<section class="section" id="fontStudio">
+
+<div class="section-title">
+
+<h2>🇦🇫 فونت و استایل فارسی</h2>
+
+<p>
+۷۰ مدل فونت و استایل — اسم خودت را وارد کن
+</p>
+
+</div>
+
+
+<div class="panel">
+
+<input
+id="fontName"
+class="name-input"
+value="محمد"
+placeholder="اسم خودت را بنویس..."
+>
+
+<div class="help">
+مثال: محمد، احمد، MihRab، ALMAS
+</div>
+
+
+<div class="filter-row">
+
+<button class="filter active" data-filter="all">
+همه
+</button>
+
+<button class="filter" data-filter="nastaliq">
+نستعلیق
+</button>
+
+<button class="filter" data-filter="classic">
+کلاسیک
+</button>
+
+<button class="filter" data-filter="kufi">
+کوفی
+</button>
+
+<button class="filter" data-filter="modern">
+مدرن
+</button>
+
+<button class="filter" data-filter="decorative">
+تزئینی
+</button>
+
+<button class="filter" data-filter="gaming">
+گیمینگ
+</button>
+
+</div>
+
+
+<div id="fontGrid" class="font-grid"></div>
+
+</div>
+
+</section>
+
+
+<section class="section" id="nicknameStudio">
+
+<div class="section-title">
+
+<h2>👑 نیک‌نیم ساز</h2>
+
+<p>
+اسم خودت را بنویس
+</p>
+
+</div>
+
+
+<div class="panel">
+
+<input
+id="nickName"
+class="name-input"
+value="MihRab"
+placeholder="نام نیک‌نیم..."
+>
+
+<div id="nicknameGrid" class="nickname-grid"></div>
+
+</div>
+
+</section>
+
+
+<section class="section" id="logoStudio">
+
+<div class="section-title">
+
+<h2>🎨 لوگو ساز</h2>
+
+<p>
+لوگوی ساده برای اسم خودت
+</p>
+
+</div>
+
+
+<div class="panel logo-maker">
+
+<div class="logo-controls">
+
+<label>نام لوگو</label>
+
+<input
+id="logoName"
+value="BrandForge"
+>
+
+<label>نماد لوگو</label>
+
+<input
+id="logoIcon"
+value="✦"
+maxlength="3"
+>
+
+<button class="main-btn" id="randomLogo">
+✨ تغییر طراحی
+</button>
+
+<button class="copy-btn" id="copyLogo">
+📋 کپی نام لوگو
+</button>
+
+</div>
+
+
+<div class="logo-stage">
+
+<div class="logo-result">
+
+<div class="logo-symbol" id="logoSymbol">
+✦
+</div>
+
+<div class="logo-title" id="logoTitle">
+BrandForge
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer class="footer">
+
+BrandForge • Font Studio • Nickname Studio • Logo Studio
+
+<br><br>
+
+ساخته شده برای اسم‌های خاص 🇦🇫
+
+</footer>
+
+
+<div class="toast" id="toast">
+کپی شد ✓
+</div>
+
+
+<script>
+
+/* =========================================================
+70 FONT / STYLE DATABASE
+========================================================= */
+
+const fonts = [
+
+/* 1-10 NASTALIQ */
+
+["نستعلیق","nastaliq normal","nastaliq"],
+["نستعلیق نازک","nastaliq thin","nastaliq"],
+["نستعلیق متوسط","nastaliq medium","nastaliq"],
+["نستعلیق ضخیم","nastaliq bold","nastaliq"],
+["نستعلیق پررنگ","nastaliq black","nastaliq"],
+["نستعلیق درخشان","nastaliq glow","nastaliq"],
+["نستعلیق طلایی","nastaliq gold","nastaliq"],
+["نستعلیق سایه‌دار","nastaliq shadow","nastaliq"],
+["گُلزار","gulzar normal","nastaliq"],
+["گُلزار پررنگ","gulzar bold","nastaliq"],
+
+/* 11-20 CLASSIC */
+
+["شکسته‌نستعلیق","lateef normal italic","classic"],
+["ثلث","amiri bold","classic"],
+["ثلث کلاسیک","amiri normal","classic"],
+["نسخ عربی","naskh normal","classic"],
+["نسخ پررنگ","naskh bold","classic"],
+["رقعه","aref normal","classic"],
+["رقعه پررنگ","aref bold","classic"],
+["دیوانی","mirza normal","classic"],
+["دیوانی پررنگ","mirza bold","classic"],
+["خط سنتی","scheherazade normal","classic"],
+
+/* 21-30 KUFI */
+
+["کوفی","kufi normal","kufi"],
+["کوفی نازک","kufi thin","kufi"],
+["کوفی متوسط","kufi medium","kufi"],
+["کوفی بولد","kufi bold","kufi"],
+["کوفی پررنگ","kufi black","kufi"],
+["کوفی درخشان","kufi glow","kufi"],
+["کوفی طلایی","kufi gold","kufi"],
+["کوفی سایه‌دار","kufi shadow","kufi"],
+["کوفی مربعی","kufi bold boxed","kufi"],
+["کوفی هندسی","reem bold spaced","kufi"],
+
+/* 31-40 MODERN */
+
+["مدرن","cairo normal","modern"],
+["مدرن نازک","cairo thin","modern"],
+["مدرن متوسط","cairo medium","modern"],
+["مدرن بولد","cairo bold","modern"],
+["مدرن پررنگ","cairo black","modern"],
+["مدرن هندسی","reem medium","modern"],
+["مدرن گرد","tajawal medium","modern"],
+["مینیمال","tajawal normal","modern"],
+["مینیمال نازک","tajawal thin","modern"],
+["مدرن لوکس","elmessiri bold luxury","modern"],
+
+/* 41-50 DECORATIVE */
+
+["عربی تزئینی","rakkas normal","decorative"],
+["عربی تزئینی بولد","rakkas bold","decorative"],
+["خط هنری","markazi normal","decorative"],
+["خط هنری پررنگ","markazi bold","decorative"],
+["دست‌نویس","lateef normal","decorative"],
+["دست‌نویس ضخیم","lateef bold","decorative"],
+["امضایی","mirza normal italic","decorative"],
+["گرافیتی","cairo black graffiti","decorative"],
+["گرافیتی نئون","cairo black neon","decorative"],
+["تزئینی طلایی","amiri bold gold","decorative"],
+
+/* 51-60 GAMING */
+
+["گیمینگ","cairo black outline","gaming"],
+["گیمینگ نئون","cairo black neon","gaming"],
+["گیمینگ سایه","cairo black double-shadow","gaming"],
+["گیمینگ آبی","cairo bold cyan","gaming"],
+["گیمینگ صورتی","cairo bold pink","gaming"],
+["گیمینگ طلایی","cairo black gold","gaming"],
+["گیمینگ مربعی","kufi bold boxed","gaming"],
+["گیمینگ آینده","reem bold spaced","gaming"],
+["گیمینگ درخشان","reem bold glow","gaming"],
+["گیمینگ حرفه‌ای","tajawal black luxury","gaming"],
+
+/* 61-70 SPECIAL */
+
+["بولد","naskh black","special"],
+["Extra Bold","cairo black","special"],
+["نازک","mada thin","special"],
+["متوسط","mada medium","special"],
+["ضخیم","mada black","special"],
+["سایه‌ای","naskh bold shadow","special"],
+["نئونی","cairo bold neon","special"],
+["طلایی سلطنتی","amiri bold luxury","special"],
+["ساده و رسمی","naskh normal","special"],
+["کالیگرافی","gulzar glow","special"]
+
+];
+
+
+/* =========================================================
+RENDER FONTS
+========================================================= */
+
+const fontGrid=document.getElementById("fontGrid");
+const fontInput=document.getElementById("fontName");
+
+let currentFilter="all";
+
+
+function renderFonts(){
+
+let text=fontInput.value.trim() || "محمد";
+
+fontGrid.innerHTML="";
+
+fonts.forEach((item,index)=>{
+
+let name=item[0];
+let css=item[1];
+let category=item[2];
+
+if(currentFilter!=="all" && category!==currentFilter){
+return;
+}
+
+const card=document.createElement("div");
+
+card.className="font-card";
+
+card.innerHTML=`
+
+<div class="font-header">
+
+<div class="font-title">
+${name}
+</div>
+
+<div class="font-number">
+#${String(index+1).padStart(2,"0")}
+</div>
+
+</div>
+
+<div class="font-preview ${css}">
+${escapeHTML(text)}
+</div>
+
+<button class="copy-btn">
+📋 کپی این مدل
+</button>
+
+`;
+
+const copy=card.querySelector(".copy-btn");
+
+copy.addEventListener("click",()=>{
+
+copyText(text);
+
+});
+
+fontGrid.appendChild(card);
+
+});
+
+}
+
+
+fontInput.addEventListener("input",renderFonts);
+
+
+/* FILTERS */
+
+document.querySelectorAll(".filter").forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+document.querySelectorAll(".filter").forEach(x=>{
+x.classList.remove("active");
+});
+
+btn.classList.add("active");
+
+currentFilter=btn.dataset.filter;
+
+renderFonts();
+
+});
+
+});
+
+
+/* =========================================================
+NICKNAME GENERATOR
+========================================================= */
+
+const nickInput=document.getElementById("nickName");
+const nicknameGrid=document.getElementById("nicknameGrid");
+
+const nicknameTemplates=[
+
+"꧁༺NAME༻꧂",
+"𓆩NAME𓆪",
+"亗『NAME』亗",
+"♛NAME♛",
+"☬NAME☬",
+"𒆜NAME𒆜",
+"꧁ঔৣNAMEঔৣ꧂",
+"『NAME』ツ",
+"乂NAME乂",
+"༒NAME༒",
+"⚔︎NAME⚔︎",
+"𓂀NAME𓂀",
+"么NAME么",
+"彡NAME彡",
+"×͜×NAME",
+"𓆩♡𓆪NAME𓆩♡𓆪",
+"『亗NAME亗』",
+"꧁NAME꧂",
+"༺NAME༻",
+"༼NAME༽",
+"『NAME』",
+"【NAME】",
+"〖NAME〗",
+"〘NAME〙",
+"〚NAME〛",
+"「NAME」",
+"『NAME』",
+"《NAME》",
+"〈NAME〉",
+"乂NAME乂",
+"メNAMEメ",
+"シNAMEシ",
+"ツNAMEツ",
+"〆NAME〆",
+"彡NAME彡",
+"么NAME么",
+"刃NAME刃",
+"⚡NAME⚡",
+"☠NAME☠",
+"☬NAME☬",
+"♕NAME♕",
+"♔NAME♔",
+"♛NAME♛",
+"♚NAME♚",
+"★NAME★",
+"☆NAME☆",
+"✦NAME✦",
+"✧NAME✧",
+"✯NAME✯",
+"✰NAME✰",
+"✪NAME✪",
+"✵NAME✵",
+"✺NAME✺",
+"༒☬NAME☬༒",
+"꧁༒NAME༒꧂",
+"꧁༺NAME༻꧂",
+"꧁𓊈NAME𓊉꧂",
+"𓆩NAME𓆪",
+"𓆩⚔NAME⚔𓆪",
+"𓆩♛NAME♛𓆪",
+"亗NAME亗",
+"亗『NAME』亗",
+"乂『NAME』乂",
+"☬『NAME』☬",
+"♛『NAME』♛",
+"⚔︎『NAME』⚔︎",
+"༒『NAME』༒",
+"✧『NAME』✧",
+"★『NAME』★",
+"☠『NAME』☠",
+"⚡『NAME』⚡",
+"ALPHA・NAME",
+"『NAME』ツ",
+"NAME々",
+"NAMEメ",
+"NAME〆",
+"NAME乂",
+"NAME彡",
+"NAME亗",
+"NAMEシ",
+"NAMEツ",
+"NAME⚡",
+"NAME♛",
+"NAME☬",
+"NAME✦",
+"NAME✯",
+"NAME★",
+"NAME☆",
+"NAME✧",
+"NAME༒",
+"NAME⚔",
+"NAME☠"
+
+];
+
+
+function renderNicknames(){
+
+let name=nickInput.value.trim() || "MihRab";
+
+nicknameGrid.innerHTML="";
+
+nicknameTemplates.forEach(template=>{
+
+let result=template.replaceAll("NAME",name);
+
+const card=document.createElement("div");
+
+card.className="nick-card";
+
+card.innerHTML=`
+
+<div class="nick-text">
+${escapeHTML(result)}
+</div>
+
+<button class="nick-copy">
+کپی
+</button>
+
+`;
+
+card.querySelector(".nick-copy")
+.addEventListener("click",()=>copyText(result));
+
+nicknameGrid.appendChild(card);
+
+});
+
+}
+
+nickInput.addEventListener("input",renderNicknames);
+
+
+/* =========================================================
+LOGO
+========================================================= */
+
+const logoName=document.getElementById("logoName");
+const logoIcon=document.getElementById("logoIcon");
+const logoTitle=document.getElementById("logoTitle");
+const logoSymbol=document.getElementById("logoSymbol");
+
+
+function updateLogo(){
+
+logoTitle.textContent=logoName.value || "BrandForge";
+logoSymbol.textContent=logoIcon.value || "✦";
+
+}
+
+
+logoName.addEventListener("input",updateLogo);
+logoIcon.addEventListener("input",updateLogo);
+
+
+document.getElementById("randomLogo")
+.addEventListener("click",()=>{
+
+const symbols=[
+"✦","★","♛","♕","⚡","☬","✧","◆","◇","𓆩","⚔","☠"
+];
+
+const gradients=[
+"linear-gradient(135deg,#20a9ff,#8b5cf6)",
+"linear-gradient(135deg,#ec4899,#8b5cf6)",
+"linear-gradient(135deg,#00e5ff,#2563eb)",
+"linear-gradient(135deg,#facc15,#f97316)",
+"linear-gradient(135deg,#22c55e,#06b6d4)"
+];
+
+logoSymbol.textContent=
+symbols[Math.floor(Math.random()*symbols.length)];
+
+logoSymbol.style.background=
+gradients[Math.floor(Math.random()*gradients.length)];
+
+});
+
+
+document.getElementById("copyLogo")
+.addEventListener("click",()=>{
+
+copyText(logoName.value || "BrandForge");
+
+});
+
+
+/* =========================================================
+COPY
+========================================================= */
+
+async function copyText(text){
+
+try{
+
+await navigator.clipboard.writeText(text);
+
+showToast("کپی شد ✓");
+
+}catch(error){
+
+const area=document.createElement("textarea");
+
+area.value=text;
+
+document.body.appendChild(area);
+
+area.select();
+
+document.execCommand("copy");
+
+area.remove();
+
+showToast("کپی شد ✓");
+
+}
+
+}
+
+
+/* =========================================================
+TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message){
+
+const toast=document.getElementById("toast");
+
+toast.textContent=message;
+
+toast.classList.add("show");
+
+clearTimeout(toastTimer);
+
+toastTimer=setTimeout(()=>{
+
+toast.classList.remove("show");
+
+},1800);
+
+}
+
+
+/* =========================================================
+SCROLL
+========================================================= */
+
+function goTo(id){
+
+document.getElementById(id)
+.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+
+/* =========================================================
+ESCAPE HTML
+========================================================= */
+
+function escapeHTML(value){
+
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+/* =========================================================
+THEME
+========================================================= */
+
+const themeBtn=document.getElementById("themeBtn");
+
+themeBtn.addEventListener("click",()=>{
+
+document.body.classList.toggle("light");
+
+if(document.body.classList.contains("light")){
+
+themeBtn.textContent="🌙";
+
+}else{
+
+themeBtn.textContent="☀️";
+
+}
+
+});
+
+
+/* =========================================================
+START
+========================================================= */
+
+renderFonts();
+renderNicknames();
+updateLogo();
+
+</script>
+
+</body>
+</html>
