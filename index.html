@@ -1,0 +1,404 @@
+/* ========================= FONT STUDIO ========================= */
+
+const unicodeSets = {
+  bold: {
+    upper: "𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙",
+    lower: "𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳",
+    nums: "𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗"
+  },
+
+  sansBold: {
+    upper: "𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭",
+    lower: "𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇",
+    nums: "𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵"
+  },
+
+  italic: {
+    upper: "𝘈𝘉𝘊𝘋𝘌𝘍𝘎𝘏𝘐𝘑𝘒𝘓𝘔𝘕𝘖𝘗𝘘𝘙𝘚𝘛𝘜𝘝𝘞𝘟𝘠𝘡",
+    lower: "𝘢𝘣𝘤𝘥𝘦𝘧𝘨𝘩𝘪𝘫𝘬𝘭𝘮𝘯𝘰𝘱𝘲𝘳𝘴𝘵𝘶𝘷𝘸𝘹𝘺𝘻"
+  },
+
+  boldItalic: {
+    upper: "𝑨𝑩𝑪𝑫𝑬𝑭𝑮𝑯𝑰𝑱𝑲𝑳𝑴𝑵𝑶𝑷𝑸𝑹𝑺𝑻𝑼𝑽𝑾𝑿𝒀𝒁",
+    lower: "𝒂𝒃𝒄𝒅𝒆𝒇𝒈𝒉𝒊𝒋𝒌𝒍𝒎𝒏𝒐𝒑𝒒𝒓𝒔𝒕𝒖𝒗𝒘𝒙𝒚𝒛"
+  },
+
+  sansBoldItalic: {
+    upper: "𝘼𝘽𝘾𝘿𝙀𝙁𝙂𝙃𝙄𝙅𝙆𝙇𝙈𝙉𝙊𝙋𝙌𝙍𝙎𝙏𝙐𝙑𝙒𝙓𝙔𝙕",
+    lower: "𝙖𝙗𝙘𝙙𝙚𝙛𝙜𝙝𝙞𝙟𝙠𝙡𝙢𝙣𝙤𝙥𝙦𝙧𝙨𝙩𝙪𝙫𝙬𝙭𝙮𝙯"
+  },
+
+  mono: {
+    upper: "𝙰𝙱𝙲𝙳𝙴𝙵𝙶𝙷𝙸𝙹𝙺𝙻𝙼𝙽𝙾𝙿𝚀𝚁𝚂𝚃𝚄𝚅𝚆𝚇𝚈𝚉",
+    lower: "𝚊𝚋𝚌𝚍𝚎𝚏𝚐𝚑𝚒𝚓𝚔𝚕𝚖𝚗𝚘𝚙𝚚𝚛𝚜𝚝𝚞𝚟𝚠𝚡𝚢𝚣",
+    nums: "𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿"
+  },
+
+  double: {
+    upper: "𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ",
+    lower: "𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫",
+    nums: "𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡"
+  },
+
+  fraktur: {
+    upper: "𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ",
+    lower: "𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷"
+  },
+
+  boldFraktur: {
+    upper: "𝕬𝕭𝕮𝕯𝕰𝕱𝕲𝕳𝕴𝕵𝕶𝕷𝕸𝕹𝕺𝕻𝕼𝕽𝕾𝕿𝖀𝖁𝖂𝖃𝖄𝖅",
+    lower: "𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟"
+  },
+
+  script: {
+    upper: "𝒜ℬ𝒞𝒟ℰℱ𝒢ℋℐ𝒥𝒦ℒℳ𝒩𝒪𝒫𝒬ℛ𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵",
+    lower: "𝒶𝒷𝒸𝒹ℯ𝒻ℊ𝒽𝒾𝒿𝓀𝓁𝓂𝓃ℴ𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏"
+  },
+
+  fullwidth: {
+    upper: "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ",
+    lower: "ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ",
+    nums: "０１２３４５６７８９"
+  }
+};
+
+
+/* ========================= تبدیل انگلیسی ========================= */
+
+function convertUnicode(text, set){
+
+  const data = unicodeSets[set];
+
+  if(!data) return text;
+
+  const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const lower = "abcdefghijklmnopqrstuvwxyz";
+  const nums = "0123456789";
+
+  let result = "";
+
+  for(const char of text){
+
+    let i = upper.indexOf(char);
+
+    if(i !== -1 && data.upper && data.upper[i]){
+      result += data.upper[i];
+      continue;
+    }
+
+    i = lower.indexOf(char);
+
+    if(i !== -1 && data.lower && data.lower[i]){
+      result += data.lower[i];
+      continue;
+    }
+
+    i = nums.indexOf(char);
+
+    if(i !== -1 && data.nums && data.nums[i]){
+      result += data.nums[i];
+      continue;
+    }
+
+    result += char;
+  }
+
+  return result;
+}
+
+
+/* ========================= انگلیسی ========================= */
+
+const englishUnicodeStyles = [
+
+  ["𝐁𝐨𝐥𝐝","bold"],
+  ["𝗦𝗮𝗻𝘀 𝗕𝗼𝗹𝗱","sansBold"],
+  ["𝘚𝘢𝘯𝘴 𝘐𝘵𝘢𝘭𝘪𝘤","italic"],
+  ["𝑩𝒐𝒍𝒅 𝑰𝒕𝒂𝒍𝒊𝒄","boldItalic"],
+  ["𝘽𝙤𝙡𝙙 𝙄𝙩𝙖𝙡𝙞𝙘","sansBoldItalic"],
+  ["𝙼𝚘𝚗𝚘","mono"],
+  ["𝔻𝕠𝕦𝕓𝕝𝕖","double"],
+  ["𝔉𝔯𝔞𝔨𝔱𝔲𝔯","fraktur"],
+  ["𝕭𝖔𝖑𝖉 𝕱𝖗𝖆𝖐𝖙𝖚𝖗","boldFraktur"],
+  ["𝒮𝒸𝓇𝒾𝓅𝓉","script"],
+  ["Ｆｕｌｌｗｉｄｔｈ","fullwidth"]
+
+];
+
+
+/* ========================= فارسی ========================= */
+
+const persianStyles = [
+
+  ["سلطنتی","꧁༺{text}༻꧂"],
+  ["بال‌دار","𓆩{text}𓆪"],
+  ["بال‌دار ۲","𓆩♡{text}♡𓆪"],
+  ["تاج‌دار","♛༺{text}༻♛"],
+  ["پادشاه","♚ {text} ♚"],
+  ["ملکه","♕ {text} ♕"],
+  ["شمشیری","⚔ {text} ⚔"],
+  ["جنگجو","⚔️༺{text}༻⚔️"],
+  ["دارک","☠︎ {text} ☠︎"],
+  ["دارک سلطنتی","☠︎༺♛ {text} ♛༻☠︎"],
+  ["آتشین","🔥 {text} 🔥"],
+  ["آتش سلطنتی","🔥♛ {text} ♛🔥"],
+  ["برقی","⚡ {text} ⚡"],
+  ["رعد","⚡༺{text}༻⚡"],
+  ["ستاره‌ای","★ {text} ★"],
+  ["ستاره‌ای ۲","✦ {text} ✦"],
+  ["ستاره‌ای ۳","✧ {text} ✧"],
+  ["الماس","◆ {text} ◆"],
+  ["الماس ۲","◇ {text} ◇"],
+  ["الماس سلطنتی","◆♛ {text} ♛◆"],
+  ["قلبی","♡ {text} ♡"],
+  ["قلبی ۲","♥ {text} ♥"],
+  ["گل‌دار","❀ {text} ❀"],
+  ["گل‌دار ۲","✿ {text} ✿"],
+  ["شکوفه","❁ {text} ❁"],
+  ["رز","🌹 {text} 🌹"],
+  ["ماه","☾ {text} ☽"],
+  ["خورشید","☀ {text} ☀"],
+  ["چشم","𓂀 {text} 𓂀"],
+  ["مصری","𓂀𓆃 {text} 𓆃𓂀"],
+  ["افسانه‌ای","༺═━ {text} ━═༻"],
+  ["قاب","『 {text} 』"],
+  ["قاب دوبل","【 {text} 】"],
+  ["قاب شرقی","〖{text}〗"],
+  ["قاب سلطنتی","꧁ {text} ꧂"],
+  ["قاب طلایی","『✦ {text} ✦』"],
+  ["مینیمال","— {text} —"],
+  ["مینیمال ۲","• {text} •"],
+  ["مینیمال ۳","· {text} ·"],
+  ["خطی","│ {text} │"],
+  ["نئون","⟡ {text} ⟡"],
+  ["نئون ۲","✦༺{text}༻✦"],
+  ["سایبری","⌬ {text} ⌬"],
+  ["سایبری ۲","⟦{text}⟧"],
+  ["هکری","⟨{text}⟩"],
+  ["گیمینگ","乂 {text} 乂"],
+  ["گیمینگ ۲","メ {text} メ"],
+  ["گیمینگ ۳","彡 {text} 彡"],
+  ["پرو","〆 {text} 〆"],
+  ["خفن","么 {text} 么"],
+  ["خاص","亗 {text} 亗"],
+  ["افسانه","ঔৣ {text} ঔৣ"],
+  ["هندی","꧁ঔৣ {text} ঔৣ꧂"],
+  ["شرقی","乂༺{text}༻乂"],
+  ["سلطنتی شرقی","꧁༺♛ {text} ♛༻꧂"],
+  ["بال سلطنتی","𓆩♛ {text} ♛𓆪"],
+  ["شمشیر سلطنتی","⚔♛ {text} ♛⚔"],
+  ["مرموز","☾༺{text}༻☽"],
+  ["خطرناک","☠︎༺{text}༻☠︎"],
+  ["گوتیک","✠ {text} ✠"],
+  ["سرد","❄ {text} ❄"],
+  ["یخی","❄️༺{text}༻❄️"],
+  ["باد","༄ {text} ༄"],
+  ["طوفان","༄⚡{text}⚡༄"],
+  ["آسمانی","☁ {text} ☁"],
+  ["فضایی","✦🚀 {text} 🚀✦"],
+  ["هواپیمایی","✈ {text} ✈"],
+  ["پرواز","✈️༺{text}༻✈️"],
+  ["موج","〰️༺{text}༻〰️"],
+  ["دریایی","≋ {text} ≋"],
+  ["اقیانوس","🌊 {text} 🌊"],
+  ["طبیعت","☘ {text} ☘"],
+  ["برگ","❧ {text} ❧"],
+  ["جنگل","🌿༺{text}༻🌿"],
+  ["آرام","༺♡{text}♡༻"],
+  ["عاشقانه","♥༺{text}༻♥"],
+  ["رمانتیک","♡༺{text}༻♡"],
+  ["زیبا","❀༺{text}༻❀"],
+  ["شیطانی","♰༺{text}༻♰"],
+  ["فرشته","♰ {text} ♰"],
+  ["نهایی","꧁༺𓆩 {text} 𓆪༻꧂"]
+
+];
+
+
+/* ========================= ساخت لیست ========================= */
+
+function buildFontList(type){
+
+  if(type === "english"){
+
+    return englishUnicodeStyles.map((item,index)=>({
+      name:item[0],
+      mode:"unicode",
+      set:item[1],
+      id:"eng"+index
+    }));
+
+  }
+
+  return persianStyles.map((item,index)=>({
+    name:item[0],
+    mode:"wrapper",
+    pattern:item[1],
+    id:"per"+index
+  }));
+
+}
+
+
+/* ========================= نوع فونت ========================= */
+
+let currentFontType = "english";
+
+function setFontType(type){
+
+  currentFontType = type;
+
+  const input = document.getElementById("fontInput");
+
+  if(input){
+
+    if(type === "persian"){
+
+      input.value = "محراب";
+      input.placeholder = "مثلاً محراب";
+
+    }else{
+
+      input.value = "MihRab";
+      input.placeholder = "مثلاً MihRab";
+
+    }
+
+  }
+
+  renderFonts();
+
+}
+
+
+/* ========================= نمایش ========================= */
+
+function renderFonts(){
+
+  const input = document.getElementById("fontInput");
+  const grid = document.getElementById("fontGrid");
+
+  if(!input || !grid) return;
+
+  const text = input.value.trim();
+
+  const styles = buildFontList(currentFontType);
+
+  grid.innerHTML = "";
+
+  styles.forEach(style=>{
+
+    let output = text;
+
+    if(style.mode === "unicode"){
+
+      output = convertUnicode(text,style.set);
+
+    }else{
+
+      output = style.pattern.replaceAll("{text}",text);
+
+    }
+
+    const card = document.createElement("div");
+
+    card.className = "option";
+
+    card.innerHTML = `
+      <strong>${style.name}</strong>
+
+      <div
+        style="
+          margin-top:14px;
+          font-size:21px;
+          line-height:2;
+          direction:${currentFontType === "persian" ? "rtl" : "ltr"};
+          word-break:break-word;
+        "
+      >${escapeFontHTML(output)}</div>
+
+      <button
+        class="copy"
+        style="margin-top:14px"
+        type="button"
+        data-copy="${escapeFontAttr(output)}"
+        onclick="copyFontText(this)"
+      >
+        📋 کپی
+      </button>
+    `;
+
+    grid.appendChild(card);
+
+  });
+
+}
+
+
+/* ========================= محافظت HTML ========================= */
+
+function escapeFontHTML(text){
+
+  return text
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+function escapeFontAttr(text){
+
+  return text
+    .replaceAll("&","&amp;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;");
+
+}
+
+
+/* ========================= کپی ========================= */
+
+async function copyFontText(button){
+
+  const text = button.getAttribute("data-copy") || "";
+
+  try{
+
+    await navigator.clipboard.writeText(text);
+
+  }catch(e){
+
+    const area = document.createElement("textarea");
+
+    area.value = text;
+
+    document.body.appendChild(area);
+
+    area.select();
+
+    document.execCommand("copy");
+
+    area.remove();
+
+  }
+
+  const old = button.textContent;
+
+  button.textContent = "✅ کپی شد";
+
+  setTimeout(()=>{
+
+    button.textContent = old;
+
+  },1200);
+
+}
+
+
+/* ========================= شروع ========================= */
+
+renderFonts();
